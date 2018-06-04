@@ -14,8 +14,7 @@ import {
 } from 'react-native';
 
 import colors from '../../common/colors'
-import { Icon } from 'react-native-elements';
-
+import Icon from '../../common/Icon'
 
 class Button extends Component{
     constructor(props){
@@ -25,7 +24,6 @@ class Button extends Component{
 	render(){
 		const {
 			TouchableComponent,
-			containerStyle,
 			onPress,
 			buttonStyle,
 			loading,
@@ -35,58 +33,61 @@ class Button extends Component{
 			titleProps,
 			titleStyle,
 			icon,
+			iconProps,
+			iconStyle,
 			iconRight,
 			disabled,
 			disabledStyle,
 			disabledTitleStyle,
 		} = this.props;
 
-		
+		const iconContent = (
+			<Icon code={icon} {...iconProps} style={[styles.icon,iconStyle]} />
+		)
 		
 		return (
-			<View style={containerStyle}>
-				<TouchableComponent 
-					style={[
-						styles.button,
-						buttonStyle,
-						disabled && styles.disabled,
-						disabled && disabledStyle,
-					  ]}
-					  onPress={onPress}
-					  disabled={disabled}
+			<TouchableComponent 
+				style={[
+					styles.button,
+					buttonStyle,
+					disabled && styles.disabled,
+					disabled && disabledStyle,
+					]}
+					onPress={onPress}
+					disabled={disabled}
+			>
+				{loading && (
+					<ActivityIndicator
+						animating={true}
+						style={[styles.loading,loadingStyle]}
+						color={loadingProps.color}
+						size={loadingProps.size}
+						{...loadingProps}
+					/>
+				)}
+				{!loading &&
+				icon &&
+				!iconRight && (
+					<Icon code={icon} {...iconProps} style={[{marginRight:5},iconStyle]} />
+				)}
+				{!loading &&
+				!!title && (
+				<Text style={[
+						styles.title,
+						titleStyle,
+						disabled && styles.disabledTitle,
+						disabled && disabledTitleStyle,
+					]}
+				{...titleProps}
 				>
-					
-					{loading && (
-						<ActivityIndicator
-							animating={true}
-							style={[styles.loading,loadingStyle]}
-							color={loadingProps.color}
-							size={loadingProps.size}
-							{...loadingProps}
-						/>
-					)}
-					{/* {!loading &&
-					icon &&
-					!iconRight && (
-						<Icon />
-					)} */}
-					{!loading &&
-					!!title && (
-					<Text style={[
-							styles.title,
-							titleStyle,
-							disabled && styles.disabledTitle,
-							disabled && disabledTitleStyle,
-						]}
-					{...titleProps}
-					>
-					{title}
-					</Text>)
-					}
-					{/* {!icon && iconRight && iconRight} */}
+				{title}
+				</Text>)
+				}
+				{icon && iconRight && (
+					<Icon code={icon} {...iconProps} style={[{marginLeft:5},iconStyle]} />
+				)}
 
-				</TouchableComponent>
-			</View>
+			</TouchableComponent>		
 		)
 	}
     
@@ -102,8 +103,9 @@ Button.propTypes = {
 	loadingStyle: ViewPropTypes.style,
 	loadingProps: PropTypes.object,
 	onPress: PropTypes.any,
-	containerStyle: ViewPropTypes.style,
 	icon: PropTypes.any,
+	iconProps: PropTypes.object,
+	iconStyle: Text.propTypes.style,
 	iconRight: PropTypes.bool,
 	TouchableComponent: PropTypes.any,
 	ViewComponent: PropTypes.any,
@@ -115,10 +117,15 @@ Button.propTypes = {
 
 Button.defaultProps = {
 	title: 'Button',
+	icon: false,
 	iconRight: false,
 	loadingProps:{
 		color: 'white',
 		size:'small'
+	},
+	iconProps:{
+		color: 'white',
+		size:16,
 	},
 	disabled: false,
 	TouchableComponent: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
@@ -131,8 +138,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 3,
 		backgroundColor: colors.main,
-		minWidth: 80
-    },
+		minWidth: 80,
+		padding: 8
+	},
     disabled: {
       	backgroundColor: '#D1D5D8',
     },
@@ -141,7 +149,6 @@ const styles = StyleSheet.create({
       color: 'white',
       fontSize: 16,
       textAlign: 'center',
-      padding: 8
     },
     disabledTitle: {
       	color: '#F3F4F5',

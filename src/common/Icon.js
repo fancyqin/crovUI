@@ -40,7 +40,7 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-    code: '&#xe040;',
+    code: "",
     size: 16,
     color: '#555'
 }

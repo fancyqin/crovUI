@@ -17,12 +17,19 @@ export default class App extends Component {
   render() {
     return (
 		<View style={styles.container}>
-			<Button title="Button" onPress={()=>{
+			<Button title="Button" buttonStyle={{marginBottom:10}} onPress={()=>{
 				Alert.alert('I am a Button!')
 			}} />
-			<Button title="Loading" loading={true} />
-			<Button title="Disabled" disabled={true} />
-			<Icon size={32} />
+			<Button title="Loading" loading={true} buttonStyle={{marginBottom:10}} />
+			<Button title="Disabled" disabled={true} buttonStyle={{marginBottom:10}} />
+			
+			<Button title='Search' icon='&#xe040;' buttonStyle={{marginBottom:10}} />
+
+			<Button title='Send Mail' icon='&#xe03d;' iconRight={true} buttonStyle={{marginBottom:10}} />
+			
+			<Button title="FULL WIDTH..." buttonStyle={{width:'100%',marginBottom:10,}}/>
+			
+			<Icon size={32} code="&#xe036;" color="#f00" />
 		</View>
     );
   }
@@ -32,6 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+	alignItems: 'center',
+	padding: 10,
   }
 });
