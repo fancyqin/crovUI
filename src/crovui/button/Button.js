@@ -23,6 +23,7 @@ class Button extends Component{
 	
 	render(){
 		const {
+			type,
 			TouchableComponent,
 			onPress,
 			buttonStyle,
@@ -40,15 +41,28 @@ class Button extends Component{
 			disabledStyle,
 			disabledTitleStyle,
 		} = this.props;
-
-		const iconContent = (
-			<Icon code={icon} {...iconProps} style={[styles.icon,iconStyle]} />
-		)
 		
+		let defaultButtonStyle,defaultTitleStyle;
+
+		if(type ==='main'){
+			defaultButtonStyle={
+				borderWidth: 0,
+				backgroundColor: colors.main,
+			}
+			defaultTitleStyle={
+				color:'white'
+			}
+
+		}
+
+
+		
+	
 		return (
 			<TouchableComponent 
 				style={[
 					styles.button,
+					defaultButtonStyle,
 					buttonStyle,
 					disabled && styles.disabled,
 					disabled && disabledStyle,
@@ -74,6 +88,7 @@ class Button extends Component{
 				!!title && (
 				<Text style={[
 						styles.title,
+						defaultTitleStyle,
 						titleStyle,
 						disabled && styles.disabledTitle,
 						disabled && disabledTitleStyle,
@@ -95,6 +110,7 @@ class Button extends Component{
 
 
 Button.propTypes = {
+	type: PropTypes.string,
 	title: PropTypes.string,
 	titleStyle: Text.propTypes.style,
 	titleProps: PropTypes.object,
@@ -116,20 +132,23 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+	type: 'normal',
 	title: 'Button',
 	icon: false,
 	iconRight: false,
 	loadingProps:{
-		color: 'white',
+		color: '#222',
 		size:'small'
 	},
 	iconProps:{
-		color: 'white',
+		color: '#222',
 		size:16,
 	},
 	disabled: false,
 	TouchableComponent: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
 }
+
+
 
 const styles = StyleSheet.create({
     button: {
@@ -137,26 +156,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 3,
-		backgroundColor: colors.main,
 		minWidth: 80,
-		padding: 8
+		padding: 8,
+		backgroundColor: '#f7f5fa',
+		borderWidth: 1,
+		borderColor: '#ced3d9',
 	},
     disabled: {
       	backgroundColor: '#D1D5D8',
     },
     title: {
-      backgroundColor: 'transparent',
-      color: 'white',
-      fontSize: 16,
-      textAlign: 'center',
+		backgroundColor: 'transparent',
+		textAlign: 'center',
+		color: '#222',
+		fontSize:16
     },
     disabledTitle: {
       	color: '#F3F4F5',
-    },
-    iconContainer: {
-      	marginHorizontal: 5,
     }
 })
 
-export default Button;
 
+export default Button;

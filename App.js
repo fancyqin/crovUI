@@ -17,13 +17,13 @@ export default class App extends Component {
   render() {
     return (
 		<View style={styles.container}>
-			<Button title="Button" buttonStyle={{marginBottom:10}} onPress={()=>{
+			<Button type="main" title="Button" buttonStyle={{marginBottom:10}} onPress={()=>{
 				Alert.alert('I am a Button!')
 			}} />
 			<Button title="Loading" loading={true} buttonStyle={{marginBottom:10}} />
 			<Button title="Disabled" disabled={true} buttonStyle={{marginBottom:10}} />
 			
-			<Button title='Search' icon='&#xe040;' buttonStyle={{marginBottom:10}} />
+			<Button type="main" title='Search' icon='&#xe040;' iconProps={{color:'white'}} buttonStyle={{marginBottom:10}} />
 
 			<Button title='Send Mail' icon='&#xe03d;' iconRight={true} buttonStyle={{marginBottom:10}} />
 			
