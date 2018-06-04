@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import {
 	StyleSheet,
 	Text,
 } from 'react-native';
 
-class Icon extends Component{
+class Icon extends PureComponent{
     constructor(props){
         super(props)
     }

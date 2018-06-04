@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import {
 	Platform,
@@ -16,7 +16,7 @@ import {
 import colors from '../../common/colors'
 import Icon from '../../common/Icon'
 
-class Button extends Component{
+class Button extends PureComponent{
     constructor(props){
         super(props);
 	}
@@ -84,8 +84,7 @@ class Button extends Component{
 				!iconRight && (
 					<Icon code={icon} {...iconProps} style={[{marginRight:5},iconStyle]} />
 				)}
-				{!loading &&
-				!!title && (
+				{!!title && (
 				<Text style={[
 						styles.title,
 						defaultTitleStyle,
@@ -156,15 +155,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 3,
-		minWidth: 80,
-		padding: 8,
+		paddingHorizontal: 12,
+		paddingVertical: 8,
 		backgroundColor: '#f7f5fa',
 		borderWidth: 1,
 		borderColor: '#ced3d9',
 	},
     disabled: {
       	backgroundColor: '#D1D5D8',
-    },
+	},
+	loading:{
+		marginRight:5
+	},
     title: {
 		backgroundColor: 'transparent',
 		textAlign: 'center',
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
     },
     disabledTitle: {
       	color: '#F3F4F5',
-    }
+	}
 })
 
 
