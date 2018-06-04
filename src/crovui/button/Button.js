@@ -42,6 +42,7 @@ class Button extends Component{
 		} = this.props;
 
 		
+		
 		return (
 			<View style={containerStyle}>
 				<TouchableComponent 
@@ -64,11 +65,11 @@ class Button extends Component{
 							{...loadingProps}
 						/>
 					)}
-					{!loading &&
+					{/* {!loading &&
 					icon &&
 					!iconRight && (
 						<Icon />
-					)}
+					)} */}
 					{!loading &&
 					!!title && (
 					<Text style={[
@@ -82,6 +83,7 @@ class Button extends Component{
 					{title}
 					</Text>)
 					}
+					{/* {!icon && iconRight && iconRight} */}
 
 				</TouchableComponent>
 			</View>
@@ -101,7 +103,7 @@ Button.propTypes = {
 	loadingProps: PropTypes.object,
 	onPress: PropTypes.any,
 	containerStyle: ViewPropTypes.style,
-	icon: PropTypes.string,
+	icon: PropTypes.any,
 	iconRight: PropTypes.bool,
 	TouchableComponent: PropTypes.any,
 	ViewComponent: PropTypes.any,
@@ -113,6 +115,12 @@ Button.propTypes = {
 
 Button.defaultProps = {
 	title: 'Button',
+	iconRight: false,
+	loadingProps:{
+		color: 'white',
+		size:'small'
+	},
+	disabled: false,
 	TouchableComponent: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
 }
 
@@ -122,7 +130,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 3,
-        backgroundColor: colors.main,
+		backgroundColor: colors.main,
+		minWidth: 80
     },
     disabled: {
       	backgroundColor: '#D1D5D8',

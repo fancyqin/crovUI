@@ -4,7 +4,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Alert  
 } from 'react-native';
 
 // import {Button} from 'react-native-elements';
@@ -16,8 +17,12 @@ export default class App extends Component {
   render() {
     return (
 		<View style={styles.container}>
-			<Button />
-      <Icon size={32} />
+			<Button title="Button" onPress={()=>{
+				Alert.alert('I am a Button!')
+			}} />
+			<Button title="Loading" loading={true} />
+			<Button title="Disabled" disabled={true} />
+			<Icon size={32} />
 		</View>
     );
   }
