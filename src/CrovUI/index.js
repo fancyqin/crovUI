@@ -7,15 +7,16 @@ import Colors from './common/Colors'
 
 
 //Picker
-// import{ Picker } from 'ant-mobile';
 
+// import List from 'antd-mobile/lib/list';
+
+import {Picker,DatePicker} from 'antd-mobile'
 
 
 // Inputs
 // import FormInput from './form/FormInput';
 // import FormLabel from './form/FormLabel';
-// import FormValidationMessage from './form/FormValidationMessage';
-// import SearchBar from './input/Search';
+
 
 
 export {
