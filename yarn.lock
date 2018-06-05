@@ -542,6 +542,10 @@ ansi@^0.3.0, ansi@~0.3.1:
   version "0.3.1"
   resolved "http://registry.npm.taobao.org/ansi/download/ansi-0.3.1.tgz#0c42d4fb17160d5a9af1e484bace1c66922c1b21"
 
+ant-mobile@^0.0.0:
+  version "0.0.0"
+  resolved "http://registry.npm.taobao.org/ant-mobile/download/ant-mobile-0.0.0.tgz#3984d9f8803755e13c20489e0d1441b48a3f6d65"
+
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/anymatch/download/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"

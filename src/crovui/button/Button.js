@@ -13,8 +13,8 @@ import {
 
 } from 'react-native';
 
-import colors from '../../common/colors'
-import Icon from '../../common/Icon'
+import colors from '../common/Colors'
+import Icon from '../common/Icon'
 
 class Button extends PureComponent{
     constructor(props){
@@ -24,7 +24,7 @@ class Button extends PureComponent{
 	render(){
 		const {
 			type,
-			TouchableComponent,
+			// TouchableComponent,
 			onPress,
 			buttonStyle,
 			loading,
@@ -59,7 +59,7 @@ class Button extends PureComponent{
 		
 	
 		return (
-			<TouchableComponent 
+			<TouchableOpacity 
 				style={[
 					styles.button,
 					defaultButtonStyle,
@@ -67,8 +67,9 @@ class Button extends PureComponent{
 					disabled && styles.disabled,
 					disabled && disabledStyle,
 					]}
+					TouchableOpacity={0.9}
 					onPress={onPress}
-					disabled={disabled}
+					disabled={disabled || loading}
 			>
 				{loading && (
 					<ActivityIndicator
@@ -101,7 +102,7 @@ class Button extends PureComponent{
 					<Icon code={icon} {...iconProps} style={[{marginLeft:5},iconStyle]} />
 				)}
 
-			</TouchableComponent>		
+			</TouchableOpacity>		
 		)
 	}
     
@@ -122,7 +123,7 @@ Button.propTypes = {
 	iconProps: PropTypes.object,
 	iconStyle: Text.propTypes.style,
 	iconRight: PropTypes.bool,
-	TouchableComponent: PropTypes.any,
+	// TouchableComponent: PropTypes.any,
 	ViewComponent: PropTypes.any,
 	disabled: PropTypes.bool,
 	disabledStyle: ViewPropTypes.style,
@@ -144,7 +145,7 @@ Button.defaultProps = {
 		size:16,
 	},
 	disabled: false,
-	TouchableComponent: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
+	// TouchableComponent: Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback,
 }
 
 

@@ -12,8 +12,7 @@ import {
 } from 'react-native';
 
 // import {Button} from 'react-native-elements';
-import Button from './src/crovui/button/Button';
-import Icon from './src/common/Icon'
+import {Button,Icon} from './src/CrovUI'
 
 
 export default class App extends Component {
