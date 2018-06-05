@@ -3,7 +3,7 @@ import Button from './button/Button';
 import Icon from './common/Icon';
 import Colors from './common/Colors'
 // import List from './list/List';
-// import ListItem from './list/ListItem';
+import ListItem from './list/ListItem';
 
 
 //Picker
@@ -22,5 +22,8 @@ import {Picker,DatePicker} from 'antd-mobile'
 export {
     Button,
     Icon,
-    Colors
+    Colors,
+    ListItem,
+    
+
 };
