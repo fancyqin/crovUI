@@ -8,9 +8,9 @@ import ListItem from './list/ListItem';
 
 //Picker
 
-// import List from 'antd-mobile/lib/list';
+import PickerChildren from './form/PickerChildren'
 
-import {Picker,DatePicker} from 'antd-mobile'
+// import List from 'antd-mobile/lib/list';
 
 
 // Inputs
@@ -24,6 +24,5 @@ export {
     Icon,
     Colors,
     ListItem,
-    
-
+    PickerChildren
 };

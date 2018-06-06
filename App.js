@@ -6,27 +6,148 @@ import {
 	Text,
 	View,
 	TextInput,
-	Picker,
 	ScrollView,
 	Alert,
+	TouchableOpacity,
 	Switch
 } from 'react-native';
 
 // import {List,ListItem} from 'react-native-elements';
-import {Button,Icon,ListItem} from './src/CrovUI'
+import {Button,Icon,ListItem,PickerChildren} from './src/CrovUI';
 
+import {Picker,DatePicker} from 'antd-mobile'
+import { TextField } from 'react-native-material-textfield';
 
 
 export default class App extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			switchValue: true
+			switchValue: true,
+			sValue:['2014','Summer'],
+			country: null
 		}
 	}
 	render() {
+
+		const seasonData = [
+			[
+			  {
+				label: '2013',
+				value: '2013',
+			  },
+			  {
+				label: '2014',
+				value: '2014',
+			  },
+			],
+			[
+			  {
+				label: 'Spring',
+				value: 'Spring',
+			  },
+			  {
+				label: 'Summer',
+				value: 'Summer',
+			  },
+			],
+		  ]
+
+		const countryData = [
+			{
+				label: 'China',
+				value: 'China',
+			},
+			{
+				label: 'USA',
+				value: 'America',
+			}
+		]
+
 		return (
 			<ScrollView style={styles.container}>
+
+
+				<Text style={styles.title}>Form</Text>
+
+				<View style={styles.box}>
+
+					<TextField
+						ref={this.lastnameRef}
+						autoCorrect={false}
+						enablesReturnKeyAutomatically={true}
+						onFocus={this.onFocus}
+						onChangeText={this.onChangeText}
+						onSubmitEditing={this.onSubmitLastName}
+						returnKeyType='next'
+						label='Company Name'
+					/>
+						
+					<TextField
+						ref={this.firstnameRef}
+						autoCorrect={false}
+						enablesReturnKeyAutomatically={true}
+						onFocus={this.onFocus}
+						onChangeText={this.onChangeText}
+						onSubmitEditing={this.onSubmitFirstName}
+						keyboardType='numeric'
+						returnKeyType='next'
+						label='Product Price'
+						prefix='USD'
+						suffix='Dollar'
+					/>
+					
+
+					<Picker extra="Select the Country"
+						okText="Confrim"
+						dismissText="Cancel"
+						value={this.state.country}
+						data={countryData}
+						onChange={v => this.setState({ country: v })}
+          				onOk={v => this.setState({ country: v })}
+						onOk={e => console.log('ok', e)}
+						onDismiss={e => console.log('dismiss', e)}
+					>
+
+						<PickerChildren label="Country" />
+					</Picker>
+
+
+					<Picker extra="Select the Season"
+						okText="Confrim"
+						dismissText="Cancel"
+						value={this.state.sValue}
+						data={seasonData}
+						cascade={false}
+						onChange={v => this.setState({ sValue: v })}
+          				onOk={v => this.setState({ sValue: v })}
+						title="Seasons"
+						onOk={e => console.log('ok', e)}
+						onDismiss={e => console.log('dismiss', e)}
+					>
+						<PickerChildren label="Season" />
+					</Picker>
+
+					<TextField
+						ref={this.aboutRef}
+						value={'Default Value'}
+						onFocus={this.onFocus}
+						onChangeText={this.onChangeText}
+						onSubmitEditing={this.onSubmitAbout}
+						returnKeyType='next'
+						multiline={true}
+						blurOnSubmit={true}
+						label='About (optional)'
+						characterRestriction={140}
+					/>
+
+					
+
+
+				</View>
+
+
+
 			
 
 				<Text style={styles.title}>Button</Text>
@@ -90,9 +211,7 @@ export default class App extends Component {
 					
 				</View>
 
-				<Text style={styles.title}>Form</Text>
-
-
+				
 				
 				
 			</ScrollView>
