@@ -5,20 +5,28 @@ import Icon from '../common/Icon'
 
 
 export default PickerChildren = props => {
+    const {label,error,extra,onClick} = props;
     return (
-        <View style={styles.wrap}>
-            {props.label && (
-                <Text style={styles.label}>
-                    {props.label}
+        <View>
+            <View style={[styles.wrap,error && styles.errorWrap]}>
+                {label && (
+                    <Text style={[styles.label,error && styles.errorLabel]}>
+                        {label}
+                    </Text>
+                )}
+                <TouchableOpacity
+                    onPress={onClick}
+                    style ={styles.textWrap}
+                >   
+                    <Text style={styles.text}>{extra}</Text>
+                    <Icon size={20} color='#555' code="&#xe006;" />
+                </TouchableOpacity>
+            </View>
+            {error && (
+                <Text style={styles.errorMsg}>
+                    {error}
                 </Text>
             )}
-            <TouchableOpacity
-                onPress={props.onClick}
-                style ={styles.textWrap}
-            >   
-                <Text style={styles.text}>{props.extra}</Text>
-                <Icon size={20} color='#555' code="&#xe006;" />
-            </TouchableOpacity>
         </View>
         
     )
@@ -30,9 +38,16 @@ const styles = StyleSheet.create({
         borderBottomWidth:0.5,
         borderColor: 'rgba(0, 0, 0, 0.38)',
     },
+    errorWrap:{
+        borderBottomWidth:2.5,
+        borderColor: 'rgba(213, 0, 0, 1)'
+    },
     label:{
         fontSize:12,
         color: 'rgba(0, 0, 0, 0.38)',
+    },
+    errorLabel:{
+        color: 'rgba(213, 0, 0, 1)'
     },
     textWrap:{
         backgroundColor: '#fff',
@@ -47,5 +62,11 @@ const styles = StyleSheet.create({
         color: 'rgba(0, 0, 0, .87)',
         fontSize:16
     },
+    errorMsg:{
+        fontSize:12,
+        color: 'rgba(213, 0, 0, 1)',
+        paddingTop: 4
+
+    }
     
 })

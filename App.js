@@ -15,8 +15,9 @@ import {
 // import {List,ListItem} from 'react-native-elements';
 import {Button,Icon,ListItem,PickerChildren} from './src/CrovUI';
 
-import {Picker,DatePicker} from 'antd-mobile'
+import {Picker,DatePicker,LocaleProvider} from 'antd-mobile'
 import { TextField } from 'react-native-material-textfield';
+import enUS from 'antd-mobile/lib/locale-provider/en_US';
 
 
 export default class App extends Component {
@@ -25,7 +26,8 @@ export default class App extends Component {
 		this.state={
 			switchValue: true,
 			sValue:['2014','Summer'],
-			country: null
+			country: null,
+			date: new Date(Date.now())
 		}
 	}
 	render() {
@@ -70,82 +72,118 @@ export default class App extends Component {
 
 				<Text style={styles.title}>Form</Text>
 
-				<View style={styles.box}>
+				<LocaleProvider locale={enUS}>
+					<View style={styles.box}>
 
-					<TextField
-						ref={this.lastnameRef}
-						autoCorrect={false}
-						enablesReturnKeyAutomatically={true}
-						onFocus={this.onFocus}
-						onChangeText={this.onChangeText}
-						onSubmitEditing={this.onSubmitLastName}
-						returnKeyType='next'
-						label='Company Name'
-					/>
+						<TextField
+							ref={this.lastnameRef}
+							autoCorrect={false}
+							enablesReturnKeyAutomatically={true}
+							onFocus={this.onFocus}
+							onChangeText={this.onChangeText}
+							onSubmitEditing={this.onSubmitLastName}
+							returnKeyType='next'
+							label='Company Name'
+						/>
+							
+						<TextField
+							ref={this.firstnameRef}
+							autoCorrect={false}
+							enablesReturnKeyAutomatically={true}
+							onFocus={this.onFocus}
+							onChangeText={this.onChangeText}
+							onSubmitEditing={this.onSubmitFirstName}
+							keyboardType='numeric'
+							returnKeyType='next'
+							label='Product Price'
+							prefix='USD'
+							suffix='Dollar'
+						/>
 						
-					<TextField
-						ref={this.firstnameRef}
-						autoCorrect={false}
-						enablesReturnKeyAutomatically={true}
-						onFocus={this.onFocus}
-						onChangeText={this.onChangeText}
-						onSubmitEditing={this.onSubmitFirstName}
-						keyboardType='numeric'
-						returnKeyType='next'
-						label='Product Price'
-						prefix='USD'
-						suffix='Dollar'
-					/>
-					
 
-					<Picker extra="Select the Country"
-						okText="Confrim"
-						dismissText="Cancel"
-						value={this.state.country}
-						data={countryData}
-						onChange={v => this.setState({ country: v })}
-          				onOk={v => this.setState({ country: v })}
-						onOk={e => console.log('ok', e)}
-						onDismiss={e => console.log('dismiss', e)}
-					>
+						<Picker extra="Select the Country"
+							locale={enUS}
+							value={this.state.country}
+							data={countryData}
+							onChange={v => this.setState({ country: v })}
+							onOk={v => this.setState({ country: v })}
+							onOk={e => console.log('ok', e)}
+							onDismiss={e => console.log('dismiss', e)}
+							cols={1}
+						>
 
-						<PickerChildren label="Country" />
-					</Picker>
+							<PickerChildren label="Country" />
+						</Picker>
 
 
-					<Picker extra="Select the Season"
-						okText="Confrim"
-						dismissText="Cancel"
-						value={this.state.sValue}
-						data={seasonData}
-						cascade={false}
-						onChange={v => this.setState({ sValue: v })}
-          				onOk={v => this.setState({ sValue: v })}
-						title="Seasons"
-						onOk={e => console.log('ok', e)}
-						onDismiss={e => console.log('dismiss', e)}
-					>
-						<PickerChildren label="Season" />
-					</Picker>
+						<Picker extra="Select the Season"
+							locale={enUS}
+							value={this.state.sValue}
+							data={seasonData}
+							cascade={false}
+							onChange={v => this.setState({ sValue: v })}
+							onOk={v => this.setState({ sValue: v })}
+							title="Seasons"
+							onOk={e => console.log('ok', e)}
+							onDismiss={e => console.log('dismiss', e)}
+						>
+							<PickerChildren label="Season" />
+						</Picker>
 
-					<TextField
-						ref={this.aboutRef}
-						value={'Default Value'}
-						onFocus={this.onFocus}
-						onChangeText={this.onChangeText}
-						onSubmitEditing={this.onSubmitAbout}
-						returnKeyType='next'
-						multiline={true}
-						blurOnSubmit={true}
-						label='About (optional)'
-						characterRestriction={140}
-					/>
-
-					
+						<TextField
+							ref={this.fff}
+							value={'Default Value'}
+							onFocus={this.onFocus}
+							onChangeText={this.onChangeText}
+							onSubmitEditing={this.onSubmitAbout}
+							returnKeyType='next'
+							multiline={true}
+							blurOnSubmit={true}
+							label='About (optional)'
+							characterRestriction={140}
+						/>
 
 
-				</View>
+						<DatePicker
+							locale={enUS}
+							mode="date"
+							title="Date"
+							extra="Select Date"
+							value={this.state.date}
+							onChange={date => this.setState({ date })}
+						>
+							<PickerChildren label="Date" />
+						</DatePicker>
+						
 
+						<TextField
+							ref={this.aaa}
+							autoCorrect={false}
+							value='wrong value'
+							enablesReturnKeyAutomatically={true}
+							returnKeyType='next'
+							label='Company Name'
+							error="This is an Error Msg"
+						/>
+
+						<Picker extra="Select the Season"
+							locale={enUS}
+							value={this.state.sValue}
+							data={seasonData}
+							cascade={false}
+							onChange={v => this.setState({ sValue: v })}
+							onOk={v => this.setState({ sValue: v })}
+							title="Seasons"
+							onOk={e => console.log('ok', e)}
+							onDismiss={e => console.log('dismiss', e)}
+						>
+							<PickerChildren label="Season" error="This is another Error Msg" />
+						</Picker>
+
+
+
+					</View>
+				</LocaleProvider>
 
 
 			
