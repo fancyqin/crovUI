@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text,View ,TouchableOpacity,StyleSheet } from 'react-native'
 import Icon from '../common/Icon'
-
+import colors from '../common/Colors'
 
 
 export default PickerChildren = props => {
@@ -36,18 +36,18 @@ const styles = StyleSheet.create({
     wrap:{
         paddingTop: 16,
         borderBottomWidth:0.5,
-        borderColor: 'rgba(0, 0, 0, 0.38)',
+        borderColor: colors.border,
     },
     errorWrap:{
-        borderBottomWidth:2.5,
-        borderColor: 'rgba(213, 0, 0, 1)'
+        borderBottomWidth:2,
+        borderColor: colors.red
     },
     label:{
         fontSize:12,
-        color: 'rgba(0, 0, 0, 0.38)',
+        color: colors.border,
     },
     errorLabel:{
-        color: 'rgba(213, 0, 0, 1)'
+        color: colors.red
     },
     textWrap:{
         backgroundColor: '#fff',
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     text:{
-        color: 'rgba(0, 0, 0, .87)',
+        color: '#222',
         fontSize:16
     },
     errorMsg:{
         fontSize:12,
-        color: 'rgba(213, 0, 0, 1)',
+        color: colors.red,
         paddingTop: 4
 
     }

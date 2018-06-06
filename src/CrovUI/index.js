@@ -9,7 +9,7 @@ import ListItem from './list/ListItem';
 //Picker
 
 import PickerChildren from './form/PickerChildren'
-
+import TextFieldConfig from './form/TextFieldConfig'
 // import List from 'antd-mobile/lib/list';
 
 
@@ -23,5 +23,6 @@ export {
     Icon,
     Colors,
     ListItem,
-    PickerChildren
+    PickerChildren,
+    TextFieldConfig
 };

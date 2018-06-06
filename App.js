@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 // import {List,ListItem} from 'react-native-elements';
-import {Button,Icon,ListItem,PickerChildren} from './src/CrovUI';
+import {Button,Icon,ListItem,PickerChildren,TextFieldConfig} from './src/CrovUI';
 
 import {Picker,DatePicker,LocaleProvider} from 'antd-mobile'
 import { TextField } from 'react-native-material-textfield';
@@ -79,9 +79,7 @@ export default class App extends Component {
 							ref={this.lastnameRef}
 							autoCorrect={false}
 							enablesReturnKeyAutomatically={true}
-							onFocus={this.onFocus}
-							onChangeText={this.onChangeText}
-							onSubmitEditing={this.onSubmitLastName}
+							{...TextFieldConfig}
 							returnKeyType='next'
 							label='Company Name'
 						/>
@@ -90,9 +88,7 @@ export default class App extends Component {
 							ref={this.firstnameRef}
 							autoCorrect={false}
 							enablesReturnKeyAutomatically={true}
-							onFocus={this.onFocus}
-							onChangeText={this.onChangeText}
-							onSubmitEditing={this.onSubmitFirstName}
+							{...TextFieldConfig}
 							keyboardType='numeric'
 							returnKeyType='next'
 							label='Product Price'
@@ -133,6 +129,7 @@ export default class App extends Component {
 						<TextField
 							ref={this.fff}
 							value={'Default Value'}
+							{...TextFieldConfig}
 							onFocus={this.onFocus}
 							onChangeText={this.onChangeText}
 							onSubmitEditing={this.onSubmitAbout}
@@ -158,6 +155,7 @@ export default class App extends Component {
 
 						<TextField
 							ref={this.aaa}
+							{...TextFieldConfig}
 							autoCorrect={false}
 							value='wrong value'
 							enablesReturnKeyAutomatically={true}
