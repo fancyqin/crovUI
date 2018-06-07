@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         color: colors.red
     },
     textWrap:{
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         width: '100%',
         paddingTop:4,
         paddingBottom: 8,

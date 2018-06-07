@@ -12,7 +12,6 @@ import {
 	Switch
 } from 'react-native';
 
-// import {List,ListItem} from 'react-native-elements';
 import {Button,Icon,ListItem,PickerChildren,TextFieldConfig,PickerStyles} from './src/CrovUI';
 
 import {Picker,DatePicker,LocaleProvider} from 'antd-mobile'
