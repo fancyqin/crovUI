@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 // import {List,ListItem} from 'react-native-elements';
-import {Button,Icon,ListItem,PickerChildren,TextFieldConfig} from './src/CrovUI';
+import {Button,Icon,ListItem,PickerChildren,TextFieldConfig,PickerStyles} from './src/CrovUI';
 
 import {Picker,DatePicker,LocaleProvider} from 'antd-mobile'
 import { TextField } from 'react-native-material-textfield';
@@ -113,6 +113,7 @@ export default class App extends Component {
 
 
 						<Picker extra="Select the Season"
+							styles={PickerStyles}
 							locale={enUS}
 							value={this.state.sValue}
 							data={seasonData}
@@ -142,6 +143,7 @@ export default class App extends Component {
 
 
 						<DatePicker
+							styles={PickerStyles}
 							locale={enUS}
 							mode="date"
 							title="Date"
@@ -165,7 +167,6 @@ export default class App extends Component {
 						/>
 
 						<Picker extra="Select the Season"
-							locale={enUS}
 							value={this.state.sValue}
 							data={seasonData}
 							cascade={false}
