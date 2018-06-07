@@ -98,7 +98,7 @@ export default class App extends Component {
 						
 
 						<Picker extra="Select the Country"
-							locale={enUS}
+							styles={PickerStyles}
 							value={this.state.country}
 							data={countryData}
 							onChange={v => this.setState({ country: v })}
@@ -114,7 +114,6 @@ export default class App extends Component {
 
 						<Picker extra="Select the Season"
 							styles={PickerStyles}
-							locale={enUS}
 							value={this.state.sValue}
 							data={seasonData}
 							cascade={false}
